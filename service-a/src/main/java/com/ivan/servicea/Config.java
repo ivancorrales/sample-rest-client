@@ -8,9 +8,19 @@ import org.springframework.web.client.RestClient;
 @Configuration
 public class Config {
 
-    @Bean
-    public RestClient assetProviderRestClient(
+    @Bean("service-b")
+    public RestClient assetProviderRestClientb(
             @Value("${serviceb.base-url}") String baseUrl
+    ) {
+        return RestClient.builder()
+                .baseUrl(baseUrl)
+                .build();
+    }
+
+
+    @Bean("service-c")
+    public RestClient assetProviderRestClientc(
+            @Value("${servicec.base-url}") String baseUrl
     ) {
         return RestClient.builder()
                 .baseUrl(baseUrl)
